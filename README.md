@@ -3,13 +3,19 @@ HTTPD4Test
 
 HTTPD4Test is a simple httpd for testing. It supports show local cotents and return message as `echo server`.
 
+https://hub.docker.com/repository/docker/koduki/httpd4test
+
+
 How to Install
 ----------
 
 Install by below command. You also need `docker` in advance.
 
 ```bash
-$ alias httpd4test="docker run -it -v `pwd`:/workdir -p 8080:8080 koduki/httpd4test"
+$ sudo sh -c 'curl https://raw.githubusercontent.com/koduki/httpd4test/main/cli/httpd4test > /usr/bin/httpd4test && chmod a+x /usr/bin/httpd4test'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   186  100   186    0     0    704      0 --:--:-- --:--:-- --:--:--   704
 $ httpd4test -h
 Usage: httpd4test [OPTION]...
 This is http server for testing
@@ -17,14 +23,8 @@ Options:
         -p, --port               port number of http server
         -m, --message            echo message
         -h, --help               this message
-        --json           change content-type to 'application/json'
+        --json                   change content-type to 'application/json'
 ```
-
-### DockerHub
-
-```
-https://hub.docker.com/repository/docker/koduki/httpd4test
-``
 
 Show local contents
 ----------
@@ -46,9 +46,20 @@ Return local contents
 [2020-12-26 20:17:47] INFO  WEBrick::HTTPServer#start: pid=1 port=8080
 ```
 
+Confirm by web browser.
 ```bash
 $ lynx http://localhost:8080/
+                                                                 Index of /
+                                Index of /
 
+         Name        Last modified   Size
+   Parent Directory 2020/12/26 20:49 -
+   a                2020/12/26 20:17 0
+   b                2020/12/26 20:17 0
+   c                2020/12/26 20:17 0
+     _____________________________________________________________
+
+    WEBrick/1.7.0 (Ruby/3.0.0/2020-12-20) at localhost:8080
 ```
 
 Run dummy API server
@@ -65,6 +76,7 @@ Return local contents
 [2020-12-26 20:11:51] INFO  WEBrick::HTTPServer#start: pid=1 port=8080
 ```
 
+Confrim by `curl` command
 ```bash
 $ curl -v http://localhost:8080/
 *   Trying 127.0.0.1:8080...

@@ -28,7 +28,7 @@ if is_help
     puts "\t-p, --port\t\t port number of http server"
     puts "\t-m, --message\t\t echo message"
     puts "\t-h, --help\t\t this message"
-    puts "\t--json\t\t change content-type to 'application/json'"
+    puts "\t--json\t\t\t change content-type to 'application/json'"
     exit
 end
 

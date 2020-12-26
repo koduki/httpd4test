@@ -2,12 +2,14 @@
 
 PORT=8080
 
-while getopts p: OPT
+while getopts :p: OPT
 do
     case $OPT in
         p)  PORT=$OPTARG
+        ;;
+     \?) 
+        ;;
     esac
 done
 
-echo $PORT
 docker run -it -v `pwd`:/workdir -p $PORT:$PORT koduki/httpd4test "$@"
