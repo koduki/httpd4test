@@ -20,6 +20,12 @@ Options:
         --json           change content-type to 'application/json'
 ```
 
+### DockerHub
+
+```
+https://hub.docker.com/repository/docker/koduki/httpd4test
+``
+
 Show local contents
 ----------
 
