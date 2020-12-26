@@ -1,9 +1,8 @@
 require 'webrick'
 require 'optparse'
 
-params = Hash[ARGV.getopts(
-    'p:m:h', 'port:', 'message:', 'json', 'help'
-    ).map { |k, v| [k.to_sym, v] }]
+params = Hash[ARGV.getopts('p:m:h', 'port:', 'message:', 'json', 'help').
+                map { |k, v| [k.to_sym, v] }]
 
 port = if params[:p] != nil
         params[:p].to_i
