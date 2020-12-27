@@ -41,6 +41,8 @@ server = WEBrick::HTTPServer.new({
 if msg
     server.mount_proc '/' do |req, res|
         if is_json
+            res.header['Access-Control-Allow-Origin'] = '*'
+            res.header['Access-Control-Allow-Headers'] = 'X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept'
             res.header['Content-Type'] = 'application/json'
         end
         res.body = msg

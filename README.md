@@ -67,33 +67,35 @@ Run dummy API server
 This is mainly used for dummy API server.
 
 ```bash
-$ httpd4test -m "{'message':'Hello World'}" --json
-[2020-12-26 20:11:51] INFO  WEBrick 1.7.0
-[2020-12-26 20:11:51] INFO  ruby 3.0.0 (2020-12-20) [x86_64-linux]
-Server is listening on :8080
-Return local contents
-[2020-12-26 20:11:51] INFO  WEBrick::HTTPServer#start: pid=1 port=8080
+$ httpd4test -p 5000 -m '{"message":"Hello World"}' --json
+[2020-12-27 00:25:25] INFO  WEBrick 1.7.0
+[2020-12-27 00:25:25] INFO  ruby 3.0.0 (2020-12-20) [x86_64-linux]
+Server is listening on :5000
+Return value is {"message":"Hello World"}
+[2020-12-27 00:25:25] INFO  WEBrick::HTTPServer#start: pid=1 port=5000
 ```
 
 Confrim by `curl` command
 ```bash
-$ curl -v http://localhost:8080/
-*   Trying 127.0.0.1:8080...
+$ curl -v http://localhost:5000/
+*   Trying 127.0.0.1:5000...
 * TCP_NODELAY set
-* Connected to localhost (127.0.0.1) port 8080 (#0)
+* Connected to localhost (127.0.0.1) port 5000 (#0)
 > GET / HTTP/1.1
-> Host: localhost:8080
+> Host: localhost:5000
 > User-Agent: curl/7.68.0
 > Accept: */*
 >
 * Mark bundle as not supporting multiuse
 < HTTP/1.1 200 OK
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Headers: X-Requested-With, Origin, X-Csrftoken, Content-Type, Accept
 < Content-Type: application/json
 < Server: WEBrick/1.7.0 (Ruby/3.0.0/2020-12-20)
-< Date: Sat, 26 Dec 2020 20:16:05 GMT
+< Date: Sun, 27 Dec 2020 00:26:55 GMT
 < Content-Length: 25
 < Connection: Keep-Alive
 <
 * Connection #0 to host localhost left intact
-{'message':'Hello World'}
+{"message":"Hello World"}%
 ```
