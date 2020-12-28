@@ -1,15 +1,19 @@
 #!/bin/bash
 
 PORT=8080
+WORKDIR=$(pwd)
 
-while getopts :p: OPT
+while getopts :p:w: OPT
 do
     case $OPT in
-        p)  PORT=$OPTARG
+    p)  PORT=$OPTARG
+        ;;
+    w)  WORKDIR=$(cd $(dirname $OPTARG) && pwd)/$(basename $OPTARG)
         ;;
      \?) 
         ;;
     esac
 done
 
-docker run -it -v `pwd`:/workdir -p $PORT:$PORT koduki/httpd4test "$@"
+echo "Mount '${WORKDIR}' on '/work'"
+docker run -it -v ${WORKDIR}:/workdir -p $PORT:$PORT koduki/httpd4test "$@"

@@ -1,7 +1,7 @@
 require 'webrick'
 require 'optparse'
 
-params = Hash[ARGV.getopts('p:m:h', 'port:', 'message:', 'json', 'help').
+params = Hash[ARGV.getopts('p:m:w:h', 'port:', 'message:', 'json', 'help').
                 map { |k, v| [k.to_sym, v] }]
 
 port = if params[:p] != nil
@@ -27,7 +27,8 @@ if is_help
     puts "Options:"
     puts "\t-p, --port\t\t port number of http server"
     puts "\t-m, --message\t\t echo message"
-    puts "\t-h, --help\t\t this message"
+    puts "\t-w \t\t\t set workdir"
+    puts "\t-h, --help\t\t show this message"
     puts "\t--json\t\t\t change content-type to 'application/json'"
     exit
 end
