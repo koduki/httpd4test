@@ -21,7 +21,8 @@ This is http server for testing
 Options:
         -p, --port               port number of http server
         -m, --message            echo message
-        -h, --help               this message
+        -w                       set workdir
+        -h, --help               show this message
         --json                   change content-type to 'application/json'
 ```
 
